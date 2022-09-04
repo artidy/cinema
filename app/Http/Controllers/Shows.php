@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class Favorite extends Controller
+class Shows extends Controller
 {
     //
 }
