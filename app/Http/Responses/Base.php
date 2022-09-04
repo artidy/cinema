@@ -36,6 +36,10 @@ abstract class Base implements Responsable
             return $this->data->toArray();
         }
 
+        if (!is_array($this->data)) {
+            $this->data = [$this->data];
+        }
+
         return $this->data;
     }
 

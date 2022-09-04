@@ -10,12 +10,11 @@ class Success extends Base
      * ExceptionResponse constructor.
      *
      * @param $data
-     * @param string|null $message
      * @param int $code
      */
-    public function __construct($data, protected ?string $message = null, int $code = Response::HTTP_OK)
+    public function __construct($data, int $code = Response::HTTP_OK)
     {
-        parent::__construct([], $code);
+        parent::__construct($data, $code);
     }
 
     /**

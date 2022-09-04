@@ -11,11 +11,10 @@ class Fail extends Base
     /**
      * ExceptionResponse constructor.
      *
-     * @param $data
      * @param string|null $message
      * @param int $code
      */
-    public function __construct($data, protected ?string $message = null, int $code = Response::HTTP_BAD_REQUEST)
+    public function __construct(protected ?string $message = null, int $code = Response::HTTP_BAD_REQUEST)
     {
         parent::__construct([], $code);
     }
