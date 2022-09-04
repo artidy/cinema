@@ -8,16 +8,16 @@ class Auth extends Controller
 {
     public function register(): string
     {
-        return 'register success';
+        return $this->created(["token" => 'register success']);
     }
 
     public function login(): string
     {
-        return 'login success';
+        return $this->success('login success');
     }
 
     public function logout(): string
     {
-        return 'logout success';
+        return $this->error('не удалось выполнить запрос');
     }
 }
