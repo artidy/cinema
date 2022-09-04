@@ -37,9 +37,9 @@ Route::post('/episode/{id}/comments/{commentId}', [Shows::class, 'postEpisodeCom
 
 Route::patch('/user', [UserArea::class, 'updateUser']);
 Route::get('/user/shows', [UserArea::class, 'getUserFilms']);
-Route::get('/api/user/shows/{filmId}/new-episodes', [UserArea::class, 'getUserNewEpisodes']);
-Route::post('/api/user/shows/watch/{filmId}', [UserArea::class, 'addFilmToWatchingList']);
-Route::delete('/api/user/shows/watch/{filmId}', [UserArea::class, 'deleteFilmToWatchingList']);
-Route::post('/api/user/episodes/watch/{episodeId}', [UserArea::class, 'addEpisodeToWatchingList'])->whereNumber('episodeId');;
-Route::delete('/api/user/episodes/watch/{episodeId}', [UserArea::class, 'deleteEpisodeToWatchingList'])->whereNumber('episodeId');;
-Route::post('/api/user/shows/{filmId}/vote', [UserArea::class, 'rateFilm']);
+Route::get('/user/shows/{filmId}/new-episodes', [UserArea::class, 'getUserNewEpisodes']);
+Route::post('/user/shows/watch/{filmId}', [UserArea::class, 'addFilmToWatchingList']);
+Route::delete('/user/shows/watch/{filmId}', [UserArea::class, 'deleteFilmToWatchingList']);
+Route::post('/user/episodes/watch/{episodeId}', [UserArea::class, 'addEpisodeToWatchingList'])->whereNumber('episodeId');;
+Route::delete('/user/episodes/watch/{episodeId}', [UserArea::class, 'deleteEpisodeToWatchingList'])->whereNumber('episodeId');;
+Route::post('/user/shows/{filmId}/vote', [UserArea::class, 'rateFilm']);
