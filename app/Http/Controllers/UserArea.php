@@ -16,33 +16,33 @@ class UserArea extends Controller
         return 'get user films';
     }
 
-    public function getUserNewEpisodes(): string
+    public function getUserNewEpisodes(int $filmId): string
     {
-        return 'get user new episodes';
+        return "get user new episodes by $filmId";
     }
 
-    public function addFilmToWatchingList(): string
+    public function addFilmToWatchingList(int $filmId): string
     {
-        return 'film was added to watching list';
+        return "film was added to watching list by $filmId";
     }
 
-    public function removeFilmToWatchingList(): string
+    public function deleteFilmToWatchingList(int $filmId): string
     {
-        return 'film was removed from watching list';
+        return "film was deleted from watching list by $filmId";
     }
 
-    public function addEpisodeToWatchingList(): string
+    public function addEpisodeToWatchingList(int $episodeId): string
     {
-        return 'episode was added to watching list';
+        return "episode was added to watching list by $episodeId";
     }
 
-    public function removeEpisodeToWatchingList(): string
+    public function deleteEpisodeToWatchingList(int $episodeId): string
     {
-        return 'episode was removed from watching list';
+        return "episode was deleted from watching list by $episodeId";
     }
 
-    public function rateFilm(): string
+    public function rateFilm(int $filmId): string
     {
-        return 'film was rated';
+        return "film: $filmId was rated";
     }
 }

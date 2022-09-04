@@ -21,9 +21,9 @@ class Shows extends Controller
         return 'get genres';
     }
 
-    public function patchGenre(int $genreId): string
+    public function patchGenre(int $id): string
     {
-        return "patch genre by id: $genreId";
+        return "patch genre by id: $id";
     }
 
     public function getEpisodes(int $filmId): string
@@ -31,24 +31,24 @@ class Shows extends Controller
         return "episodes by film id: $filmId";
     }
 
-    public function getEpisodeInfo(int $episodeId): string
+    public function getEpisodeInfo(int $id): string
     {
-        return "got episode by id: $episodeId";
+        return "got episode by id: $id";
     }
 
-    public function getEpisodeComments(int $episodeId): string
+    public function getEpisodeComments(int $id): string
     {
-        return "got comments by episode id: $episodeId";
+        return "got comments by episode id: $id";
     }
 
-    public function postEpisodeComment(int $episodeId): string
+    public function postEpisodeComment(int $episodeId, int $commentId): string
     {
-        return "post comment by episode id: $episodeId";
+        return "post comment by episode id: $episodeId, комментарий для ответа: $commentId";
     }
 
-    public function deleteEpisodeComment(int $episodeId): string
+    public function deleteEpisodeComment(int $id): string
     {
-        return "delete comment by episode id: $episodeId";
+        return "delete comment by id: $id";
     }
 
     public function postFilm(): string
