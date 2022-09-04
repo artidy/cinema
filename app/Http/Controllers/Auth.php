@@ -13,11 +13,11 @@ class Auth extends Controller
 
     public function login(): string
     {
-        return 'register success';
+        return 'login success';
     }
 
     public function logout(): string
     {
-        return 'register success';
+        return 'logout success';
     }
 }
