@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth as AuthFacade;
-use Illuminate\Http\Request;
 
 class Auth extends Controller
 {
-    public function register($request): string
+    public function register(UserRequest $request): string
     {
         $params = $request->safe()->except('file');
         $user = User::create($params);
@@ -20,7 +21,7 @@ class Auth extends Controller
         ]);
     }
 
-    public function login($request): string
+    public function login(LoginRequest $request): string
     {
         if (!AuthFacade::attempt($request->validated())) {
             abort(401, trans('auth.failed'));
