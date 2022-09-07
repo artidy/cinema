@@ -8,8 +8,8 @@ use Illuminate\Database\Seeder;
 class RightSeeder extends Seeder
 {
     const RIGHTS = [
-        ['title' => 'Пользователь', 'code' => 'user'],
-        ['title' => 'Модератор', 'code' => 'moderator'],
+        ['title' => 'Просматривать', 'code' => Right::READ],
+        ['title' => 'Редактировать', 'code' => Right::EDIT],
     ];
 
     /**
@@ -20,7 +20,10 @@ class RightSeeder extends Seeder
     public function run(): void
     {
         foreach (self::RIGHTS as $right) {
-            Right::create($right);
+            Right::updateOrCreate(
+                ['code' => $right['code']],
+                $right
+            );
         }
     }
 }
