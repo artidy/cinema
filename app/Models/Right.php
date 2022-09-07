@@ -10,6 +10,11 @@ class Right extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'code',
+    ];
+
     public function roles(): BelongsTo
     {
         return $this->belongsTo(Role::class);
