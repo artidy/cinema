@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Responses\Base;
 use App\Http\Responses\Fail;
+use App\Http\Responses\PaginatedResponse;
 use App\Http\Responses\Success;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -47,5 +48,10 @@ class Controller extends BaseController
         $result = new Fail($message);
 
         return $this->send($result);
+    }
+
+    protected function paginate($data, ?int $code = Response::HTTP_OK): PaginatedResponse
+    {
+        return new PaginatedResponse($data, $code);
     }
 }

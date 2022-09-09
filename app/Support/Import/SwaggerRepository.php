@@ -5,10 +5,8 @@ namespace App\Support\Import;
 use App\Models\Film;
 use App\Models\Genre;
 use GuzzleHttp\Promise\PromiseInterface;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Response;
-use ImportRepository;
 
 class SwaggerRepository implements ImportRepository
 {
@@ -18,7 +16,7 @@ class SwaggerRepository implements ImportRepository
         'To Be Determined' => 'pause',
     ];
 
-    public function getFilms(string $imdbId): ?Collection
+    public function getFilms(string $imdbId): ?array
     {
         $data = $this->api(['imdbId' => $imdbId]);
 
@@ -48,11 +46,7 @@ class SwaggerRepository implements ImportRepository
             'status' => $data['productionStatus'],
         ]);
 
-        if (count($filmGenres) > 0) {
-            $film->genres()->sync($filmGenres);
-        }
-
-        return $film;
+        return ['film' => $film, 'genres' => $filmGenres];
     }
 
     private function api(array $params = []): PromiseInterface|Response

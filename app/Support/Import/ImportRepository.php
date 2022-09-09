@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Eloquent\Collection;
+namespace App\Support\Import;
 
 interface ImportRepository
 {
-    public function getFilms(string $imdbId): ?Collection;
+    public function getFilms(string $imdbId): ?array;
 }
