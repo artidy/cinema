@@ -27,6 +27,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/films', [FilmController::class, 'index']);
     Route::post('/films', [FilmController::class, 'createFilm']);
     Route::get('/films/{filmId}', [FilmController::class, 'getFilm']);
+    Route::get('/films/{filmId}/comments', [FilmController::class, 'getComments']);
     Route::get('/genres', [Shows::class, 'getGenres']);
     Route::patch('/genres/{id}', [Shows::class, 'patchGenre']);
 
