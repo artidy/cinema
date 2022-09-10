@@ -23,15 +23,15 @@ class FilmController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  Film $film
+     * @param  int $filmId
      * @return Response
      */
-    public function show(Film $film): Response
+    public function getFilm(int $filmId): Response
     {
-        return $this->success($film);
+        return $this->success(Film::find($filmId));
     }
 
-    public function request(AddFilmRequest $request): Response
+    public function createFilm(AddFilmRequest $request): Response
     {
         AddFilm::dispatch($request->imdbId);
 
