@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AddCommentRequest;
 use App\Http\Responses\PaginatedResponse;
+use App\Models\Comment;
 use App\Models\Film;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,5 +33,10 @@ class CommentController extends Controller
             'rating' => $comment->rating,
             'user_id' => Auth::id(),
         ]));
+    }
+
+    public function deleteComment(Comment $comment): Response
+    {
+        return $this->success($comment->delete());
     }
 }

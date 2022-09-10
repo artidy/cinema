@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AddCommentRequest;
 use App\Http\Requests\AddFilmRequest;
 use App\Http\Responses\PaginatedResponse;
 use App\Jobs\AddFilm;
-use App\Models\Comment;
 use App\Models\Film;
 use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Support\Facades\Auth;
 
 class FilmController extends Controller
 {

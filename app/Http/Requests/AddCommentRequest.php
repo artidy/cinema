@@ -25,6 +25,7 @@ class AddCommentRequest extends FormRequest
     {
         return [
             'text' => ['required', 'max:1000'],
+            'rating' => ['required', 'regex:/[1-5]/']
         ];
     }
 }

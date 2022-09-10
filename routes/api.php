@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FilmController;
 use App\Http\Controllers\Shows;
 use App\Http\Controllers\UserArea;
@@ -27,7 +28,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/films', [FilmController::class, 'index']);
     Route::post('/films', [FilmController::class, 'createFilm']);
     Route::get('/films/{filmId}', [FilmController::class, 'getFilm']);
-    Route::get('/films/{filmId}/comments', [FilmController::class, 'getComments']);
+    Route::get('/films/{filmId}/comments', [CommentController::class, 'index']);
+    Route::post('/films/{filmId}/comments', [CommentController::class, 'addComment']);
+    Route::delete('/films/{filmId}/comments/{commentId}', [CommentController::class, 'deleteComment']);
     Route::get('/genres', [Shows::class, 'getGenres']);
     Route::patch('/genres/{id}', [Shows::class, 'patchGenre']);
 
