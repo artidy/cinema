@@ -10,6 +10,12 @@ class Film extends Model
 {
     use HasFactory;
 
+    protected $withCount = ['comments'];
+
+    protected $casts = [
+        'comments_count' => 'int'
+    ];
+
     public function comments(): HasMany
     {
         return $this->hasMany(Comment::class);
