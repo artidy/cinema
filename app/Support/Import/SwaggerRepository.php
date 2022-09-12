@@ -20,6 +20,8 @@ class SwaggerRepository implements ImportRepository
     {
         $data = $this->api(['imdbId' => $imdbId]);
 
+        return ['film' => $data, 'genres' => $data['genres']];
+
         $filmGenres = [];
 
         foreach ($data['genres'] as $genre) {

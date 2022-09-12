@@ -20,24 +20,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/register', [Auth::class, 'register']);
-Route::post('/login', [Auth::class, 'login']);
+Route::post('/auth', [Auth::class, 'login']);
+Route::get('/users', [Auth::class, 'getUsers']);
+Route::post('/user/shows/watch/{filmId}', [UserArea::class, 'addFilmToWatchingList']);
+Route::post('/films', [FilmController::class, 'createFilm']);
 
-Route::middleware('auth:sanctum')->group(function () {
-    Route::post('/logout', [Auth::class, 'logout']);
-
-    Route::get('/films', [FilmController::class, 'index']);
-    Route::post('/films', [FilmController::class, 'createFilm']);
-    Route::get('/films/{filmId}', [FilmController::class, 'getFilm']);
-    Route::get('/films/{filmId}/comments', [CommentController::class, 'index']);
-    Route::post('/films/{filmId}/comments', [CommentController::class, 'addComment']);
-    Route::delete('/films/{filmId}/comments/{commentId}', [CommentController::class, 'deleteComment']);
-    Route::get('/genres', [Shows::class, 'getGenres']);
-    Route::patch('/genres/{id}', [Shows::class, 'patchGenre']);
-
-    Route::patch('/user', [UserArea::class, 'updateUser']);
-    Route::get('/user/shows', [UserArea::class, 'getUserFilms']);
-    Route::get('/user/shows/{filmId}/new-episodes', [UserArea::class, 'getUserNewEpisodes']);
-    Route::post('/user/shows/watch/{filmId}', [UserArea::class, 'addFilmToWatchingList']);
-    Route::delete('/user/shows/watch/{filmId}', [UserArea::class, 'deleteFilmToWatchingList']);
-    Route::post('/user/shows/{filmId}/vote', [UserArea::class, 'rateFilm']);
-});
+//Route::middleware('auth:sanctum')->group(function () {
+//    Route::post('/logout', [Auth::class, 'logout']);
+//
+//    Route::get('/films', [FilmController::class, 'index']);
+//    Route::post('/films', [FilmController::class, 'createFilm']);
+//    Route::get('/films/{filmId}', [FilmController::class, 'getFilm']);
+//    Route::get('/films/{filmId}/comments', [CommentController::class, 'index']);
+//    Route::post('/films/{filmId}/comments', [CommentController::class, 'addComment']);
+//    Route::delete('/films/{filmId}/comments/{commentId}', [CommentController::class, 'deleteComment']);
+//    Route::get('/genres', [Shows::class, 'getGenres']);
+//    Route::patch('/genres/{id}', [Shows::class, 'patchGenre']);
+//
+//    Route::patch('/user', [UserArea::class, 'updateUser']);
+//    Route::get('/user/shows', [UserArea::class, 'getUserFilms']);
+//    Route::get('/user/shows/{filmId}/new-episodes', [UserArea::class, 'getUserNewEpisodes']);
+//    Route::post('/user/shows/watch/{filmId}', [UserArea::class, 'addFilmToWatchingList']);
+//    Route::delete('/user/shows/watch/{filmId}', [UserArea::class, 'deleteFilmToWatchingList']);
+//    Route::post('/user/shows/{filmId}/vote', [UserArea::class, 'rateFilm']);
+//});

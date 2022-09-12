@@ -6,6 +6,8 @@ use App\Http\Responses\Base;
 use App\Http\Responses\Fail;
 use App\Http\Responses\PaginatedResponse;
 use App\Http\Responses\Success;
+use Illuminate\Contracts\Support\Responsable;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -17,37 +19,24 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    protected function send(Base $result): Response
+    public function success(mixed $data): JsonResponse|Responsable
     {
-        return $result->toResponse(new Request());
+        return new Success($data);
     }
 
-    public function success(mixed $data): Response
+    public function created(mixed $data): JsonResponse|Responsable
     {
-        $result = new Success($data);
-
-        return $this->send($result);
+        return new Success($data, Response::HTTP_CREATED);
     }
 
-    public function created(mixed $data): Response
+    public function noContent(mixed $data): JsonResponse|Responsable
     {
-        $result = new Success($data, Response::HTTP_CREATED);
-
-        return $this->send($result);
+        return new Success($data, Response::HTTP_NO_CONTENT);
     }
 
-    public function noContent(mixed $data): Response
+    public function error(string $message): JsonResponse|Responsable
     {
-        $result = new Success($data, Response::HTTP_NO_CONTENT);
-
-        return $this->send($result);
-    }
-
-    public function error(string $message): Response
-    {
-        $result = new Fail($message);
-
-        return $this->send($result);
+        return new Fail($message);
     }
 
     protected function paginate($data, ?int $code = Response::HTTP_OK): PaginatedResponse
